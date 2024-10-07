@@ -24,11 +24,35 @@
 <script src="js/jquery.easing.1.3.min.js"></script>
 <script src="js/jquery.easing.compatibility.js"></script>
 
-<!-- Deklaracja zmiennej -->
-<script async>
-	let name = prompt('Jak masz na imię?', '');
-</script>
+<script>
+	let score = 0;
+	let q = 0;
+	let answer ;
+	let wrong = 0;
+	const questions = [
+		['Ile kół ma samochód osobowy?', '4'],
+		['Ile kół ma unicykl', '1'],
+		['Ile kół ma trajka', '3'],
+		['Ile kół ma rower górski', '2'],
+		['Ile kół zazwyczaj mają samoloty wąskokadłubowe?', '6']
+	];
 
+	
+	function testQuestion() {
+		wrong = 0;
+		answer = document.getElementById("answer").value;
+		if (answer == questions[q][1]) {
+			score++;
+		}
+		else{
+			wrong = 1;
+		}
+		q++;
+		showMessage(wrong);
+	}
+
+
+</script>	
 
 </head>
 
@@ -57,7 +81,6 @@
 							class="glyphicon glyphicon-home"></span>
 					</a></li>
 					<li><a href="#projekt1">Projekt 1</a></li>
-					<li><a href="#projekt2">Projekt 2</a></li>
 					<li><a href="#form" data-toggle="modal"
 						data-target="#ModalForm">Kontakt</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -126,23 +149,6 @@
 						<p id="index">999</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-2" align="left">
-						<p>dodatkowy akapit1:</p>
-					</div>
-					<div class="col-md-4">
-						<p id="bonus1">999</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2" align="left">
-						<p>dodatkowy akapit2</p>
-					</div>
-					<div class="col-md-4">
-						<p id="bonus2">999</p>
-					</div>
-				</div>
-
 			</div>
 
 		</div>
@@ -154,94 +160,50 @@
 			<div class="jumbotron">
 				<h1>Projekt 1</h1>
 					<script async>
-					document.write('<p>Ćw. 1. Witaj, ' + name + '</p>');
-					</script>
-
-					<script async>
-					let tablica = ['marchew','pomidor','ziemniak','ogorek','gruszka'];
-					alert(tablica[4]);
-					tablica[tablica.length-1] = 'warzywowoc5';
-					alert(tablica[tablica.length-1]);
-					tablica[5] = 'warzywowoc6';
-					tablica[tablica.length] = 'warzywowoc7';
-					tablica.push('warzywowoc8', 'warzywowoc9', 'warzywowoc10', 'warzywowoc11');
-					tablica.unshift('warzywowoc12', 'warzywowoc13');
-					tablica.forEach(element => {
-						document.write('<p>'+element+'</p>');
-					});
-					
-					let p = [0,1,2,3];
-					let totalItems = p.push(4,5);
-					document.write('<p>ilosć elemntów w tablicy p po pushu: '+totalItems+'</p>');
-					var removedItem = p.pop();
-					document.write('<p>Wartość zmiennej removedItem po użyciu pop na tablicy p: '+totalItems+'</p>');
-
-					let tablica2 = ['samochod1','samochod2','samochod3','samochod4','samochod5','samochod6'];
-					document.write('<p>Pierwszy element to <strong>'+tablica2[0] + '</strong></p>');
-					document.write('<p>Ostatni element to <strong>'+tablica2[tablica2.length-1] + '</strong></p>');
-					tablica2.unshift('samochod7');
-					document.write('<p>Nowy pierwszy element to <strong>'+tablica2[0] + '</strong></p>');
-
-					const formsCounter = document.forms.length
-					document.write('<p>wszystkich formularzy '+formsCounter+'</p>');
-
-					const containerCounter = document.querySelectorAll('.container').length;
-					document.write('<p>ilosć wszystkich divów z klasą container '+containerCounter+'</p>');
-
 					document.getElementById('surname').innerHTML = "Brzoza";
 					document.getElementById('name').innerHTML = "Bartłomiej";
 					document.getElementById('index').innerHTML = "20434";
 					document.getElementById('email').innerHTML = "20434@student.ans-elblag.pl";
 					document.getElementById('group').innerHTML = "1";
 
-					document.getElementById('bonus1').innerHTML = tablica[2] + ' oraz elementy tablicy (while):';
-					document.getElementById('bonus2').innerHTML = tablica2[3] + ' oraz elementy tablicy (for):';
-
-					let i = 0;
-					while(i<tablica.length / 2){
-						document.getElementById('bonus1').innerHTML += '<p>'+tablica[i]+'</p>';
-						i++;
-					}
-					for(i = 0 ; i< tablica2.length /2 ; i++){
-						document.getElementById('bonus2').innerHTML += '<p>'+tablica2[i]+'</p>';
-					}
-
-					function writeData(){
-						alert(document.getElementById('surname').innerHTML +' '+ document.getElementById('name').innerHTML+ ' '+document.getElementById('email').innerHTML+' '+document.getElementById('group').innerHTML+' '+document.getElementById('index').innerHTML);
-					}
-
-
-					document.write('<button onclick="writeData()">Przycisk</button> ')
 					</script>
-			</div>
-		</div>
-	</section>
-
-
-	<section id="projekt2">
-		<div class="container">
-			<div class="jumbotron">
-				<h1>Projekt 2</h1>
-				
-				<script async>
-					let score = 0;
-					const questions = [
-						['Ile kół ma samochód?', 4],
-						['Ile kół ma górski rower?', 2],
-						['Ile kół ma unicykl?', 1]
-						];
-						for(i = 0; i < questions.length ; i++){
-							let answer = prompt(questions[i][0],'')
-							if (answer == questions[i][1]) {
-								alert('Prawidłowa odpowiedź!');
-								score++;
-								} else {
-								alert('Błąd. Prawidłowa odpowiedź to ' + questions[i][1]);
+					<div id="test">
+					<script>
+							function showMessage(wrong){
+								let message = 'Liczba punktów: ' + score;
+								message += ' z ' + questions.length;
+								message += '.';
+								//quiz
+								if(q<questions.length){
+									//sprawdzanie czy ostatnie pytanie jest złe a jak nie jest to wyświetla poprawną odpowiedź
+									if(wrong == 1){
+										document.getElementById("test").innerHTML = ('<p> O nie! Poprawna odpowiedź to było: ' + questions[q-1][1] + '</p>');
+										document.getElementById("test").innerHTML += ('<p>' + questions[q][0] + '</p>');
+									}
+									//jak jest poprawnie to wykonuje ten kod
+									else{
+										document.getElementById("test").innerHTML = ('<p>' + questions[q][0] + '</p>');
+									}
+									document.getElementById("test").innerHTML += ("<input type='text' id='answer'>");
+									document.getElementById("test").innerHTML += ("<button onclick='testQuestion()'>Następne pytanie</button>");
+									document.getElementById("test").innerHTML += ('<p>' + message + '</p>');
 								}
-						}
-						document.write('<p>Twój wynik '+score+'</p>');
-				</script>
-				
+								// Pokazanie ostatniego wyniku oraz złej odpowiedzi do ostatniego pytania jak tak się wydarzyło
+								else{
+									if(wrong == 1){
+										document.getElementById("test").innerHTML = ('<p> O nie! Poprawna odpowiedź to było: ' + questions[q-1][1] + '</p>');
+										document.getElementById("test").innerHTML += ('<p>' + message + '</p>');
+									}
+									else{
+										document.getElementById("test").innerHTML = ('<p>' + message + '</p>');
+									}
+
+								}
+
+							}
+							showMessage(wrong);
+					</script>
+					</div>
 			</div>
 		</div>
 	</section>
