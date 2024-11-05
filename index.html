@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Programowanie w JAVASCRIPT - template">
-<meta name="author" content="dr inż. Jacek Paluszak">
+<meta name="author" content="Bartłomiej Brzoza 20434">
 <link rel="icon" href="img/favicon.ico">
 
 <title>Programowanie w JAVASCRIPT</title>
@@ -86,7 +86,7 @@
 						<p>nazwisko:</p>
 					</div>
 					<div class="col-md-4">
-						<p>Kowalski</p>
+						<p>Brzoza</p>
 					</div>
 				</div>
 				<div class="row">
@@ -94,7 +94,7 @@
 						<p>imię:</p>
 					</div>
 					<div class="col-md-4">
-						<p>Jan</p>
+						<p>Bartłomiej</p>
 					</div>
 				</div>
 				<div class="row">
@@ -110,7 +110,7 @@
 						<p>email:</p>
 					</div>
 					<div class="col-md-4">
-						<p>999@student.ans-elblag.pl</p>
+						<p>20434@student.ans-elblag.pl</p>
 					</div>
 				</div>
 				<div class="row">
@@ -118,7 +118,7 @@
 						<p>nr indeksu:</p>
 					</div>
 					<div class="col-md-4">
-						<p>999</p>
+						<p>20434</p>
 					</div>
 				</div>
 
@@ -154,11 +154,11 @@
 		<div class="container">
 			<div class="jumbotron">
 				<h1>Projekt X</h1>
-
-				<p>Miejsce na projekt laboratoryjny</p>
-				<p class="pq">To jest zwykły tekst przypisany do klasy pq.</p>
-				<span class="pq">"Nie ma problemów nie do rozwiązania. Są tylko problemy, którym poświęciliśmy za mało czasu."</span>
-				<span class="pq">"Mądrość to wiedza, co należy pominąć."</span>
+				<p class="pq">To jest przykładowy tekst przypisany do klasy pq.</p>
+				<span class="pullquote">... nie ma problemów nie do rozwiązania. Są
+				tylko problemy, którym poświęciliśmy za mało czasu.</span>
+				<span class="pq">... nie ma problemów nie do rozwiązania. Są tylko
+				problemy, którym poświęciliśmy za mało czasu.</span>
 			</div>
 		</div>
 	</section>
@@ -203,7 +203,7 @@
 	<section id="projekt5">
 		<div class="container">
 			<div class="jumbotron">
-				<h1>Laboratorium - Tabela danych</h2>
+				<h1>Tabela danych</h2>
 				<table id="laboratoryTable" style="width: 100%; border-collapse: collapse;">
 				<thead>
 					<tr>
@@ -217,14 +217,14 @@
 					<tr>
 						<td>1</td>
 						<td><input type="text" placeholder="Wprowadź dane" /></td>
-						<td>Przykładowy opis</td>
-						<td><q>Cytat dotyczący danych</q></td>
+						<td>Przykładowy opis 1</td>
+						<td><q>Przykładowy opis 1</q></td>
 					</tr>
 					<tr>
 						<td>2</td>
 						<td><input type="text" placeholder="Wprowadź dane" /></td>
-						<td>Opis dla elementu 2</td>
-						<td><q>Kolejny cytat</q></td>
+						<td>Przykładowy opis 2</td>
+						<td><q>Przykładowy opis 2</q></td>
 					</tr>
 					<!-- Można dodać więcej wierszy według potrzeby -->
 				</tbody>
@@ -238,9 +238,7 @@
 				<h2>Edytowanie tabeli</h2>
 				<button id="btn-child" class="editButton">Stylizuj dzieci elementu (td w pierwszym wierszu)</button>
 				<button id="btn-sibling" class="editButton">Stylizuj sąsiadujące elementy (td sąsiadujące z opisem)</button>
-				<button id="btn-attr" class="editButton">Zmiana elementów z atrybutem placeholder</button>
-				<button id="btn-startsWith" class="editButton">Elementy z atrybutem zaczynającym się na "place"</button>
-				<button id="btn-contains" class="editButton">Elementy z atrybutem zawierającym "data"</button>
+				<button id="btn-attr" class="editButton">Stylizuj elementy z atrybutem placeholder</button>
 			</div>
 		</div>
 	</section>
@@ -251,9 +249,7 @@
 				<button id="btn-evenRows" class="editButton">Stylizuj parzyste wiersze</button>
 				<button id="btn-oddRows" class="editButton">Stylizuj nieparzyste wiersze</button>
 				<button id="btn-firstLast" class="editButton">Pierwszy i ostatni wiersz</button>
-				<button id="btn-notSelector" class="editButton">Elementy bez klasy highlight</button>
 				<button id="btn-containsText" class="editButton">Wiersze zawierające "Przykładowy"</button>
-				<button id="btn-hiddenToggle" class="editButton">Pokaż/ukryj ukryte elementy</button>
 			</div>
 		</div>
 	</section>
@@ -465,17 +461,6 @@
 				$(this).toggleClass('active');
 			});
 
-			// Elementy z atrybutem zaczynającym się na "place"
-			$('#btn-startsWith').click(function() {
-				$('#laboratoryTable input[placeholder^="place"]').toggleClass('highlight');
-				$(this).toggleClass('active');
-			});
-
-			// Elementy z atrybutem zawierającym "data"
-			$('#btn-contains').click(function() {
-				$('#laboratoryTable td[placeholder*="data"]').toggleClass('highlight');
-				$(this).toggleClass('active');
-			});
 		});
 	</script>
 	<script>
@@ -497,22 +482,9 @@
 				$('#laboratoryTable tr:first, #laboratoryTable tr:last').toggleClass('highlight');
 				$(this).toggleClass('active');
 			});
-
-			// Stylizacja elementów bez klasy highlight
-			$('#btn-notSelector').click(function() {
-				$('#laboratoryTable td').not('.highlight').toggleClass('highlight');
-				$(this).toggleClass('active');
-			});
-
 			// Stylizacja wierszy zawierających tekst "Przykładowy"
 			$('#btn-containsText').click(function() {
 				$('#laboratoryTable td:contains("Przykładowy")').parent().toggleClass('highlight');
-				$(this).toggleClass('active');
-			});
-
-			// Pokazanie/ukrycie ukrytych elementów
-			$('#btn-hiddenToggle').click(function() {
-				$('#laboratoryTable tr:hidden').fadeToggle();
 				$(this).toggleClass('active');
 			});
 		});
