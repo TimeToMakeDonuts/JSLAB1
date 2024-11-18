@@ -1,26 +1,54 @@
 import React from 'react';
 import './App.css';
-import Card from './components/Card';
+import HandleClick from './components/HandleClick';
+import HandleMouseOver from './components/HandleMouseOver';
+import ShowImage from './components/ShowImage';
+import LoadDataFromJson from './components/LoadDataFromJson';
+import UploadFile from './components/UploadFile';
+import ChangeStyle from './components/ChangeStyle';
 import Counter from './components/Counter';
-import CounterWithReducer from './components/CounterWithReducer';
-import EffectComponent from './components/EffectComponent';
-import { UserProvider } from './contexts/UserContext';
-import UserProfile from './components/UserProfile';
-import InputFocus from './components/InputFocus';
+import CounterIncorrect from './components/CounterIncorrect';
 
 function App() {
-  return (
-    <UserProvider>
-      <div className="App">
-        <Card title="Reusable Component" content="This is a card component using props." />
-        <Counter />
-        <CounterWithReducer />
-        <EffectComponent />
-        <UserProfile />
-        <InputFocus />
-      </div>
-    </UserProvider>
-  );
+    return (
+        <div className="app">
+            <h1>React Components Project</h1>
+            <div className="grid">
+                <div className="card">
+                    <h2>Counter (Prawidłowy)</h2>
+                    <Counter />
+                </div>
+                <div className="card">
+                    <h2>Counter (Nieprawidłowy)</h2>
+                    <CounterIncorrect />
+                </div>
+                <div className="card">
+                    <h2>Handle Click</h2>
+                    <HandleClick />
+                </div>
+                <div className="card">
+                    <h2>Handle Mouse Over</h2>
+                    <HandleMouseOver />
+                </div>
+                <div className="card">
+                    <h2>Show Image</h2>
+                    <ShowImage />
+                </div>
+                <div className="card">
+                    <h2>Load Data from JSON</h2>
+                    <LoadDataFromJson />
+                </div>
+                <div className="card">
+                    <h2>Upload File</h2>
+                    <UploadFile />
+                </div>
+                <div className="card">
+                    <h2>Change Style</h2>
+                    <ChangeStyle />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
