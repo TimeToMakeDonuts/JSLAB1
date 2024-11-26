@@ -11,7 +11,9 @@ const ShowImage = () => {
             <button onClick={toggleImage}>
                 {show ? 'Ukryj obraz' : 'Pokaż obraz'}
             </button>
-            {show && <img src={image} alt="Przykład" />}
+            {show && <img src={image} alt="Przykład" style={{
+                            width: '100px',
+                            height: '100px'}} />}
         </div>
     );
 };

@@ -1,54 +1,32 @@
-import React from 'react';
-import './App.css';
-import HandleClick from './components/HandleClick';
-import HandleMouseOver from './components/HandleMouseOver';
-import ShowImage from './components/ShowImage';
-import LoadDataFromJson from './components/LoadDataFromJson';
-import UploadFile from './components/UploadFile';
-import ChangeStyle from './components/ChangeStyle';
-import Counter from './components/Counter';
-import CounterIncorrect from './components/CounterIncorrect';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Lab7 from "./components/lab7/Lab7";
+import Lab8 from "./components/lab8/Lab8";
+import Lab9 from "./components/lab9/Lab9";
+import "./App.css";
 
 function App() {
-    return (
-        <div className="app">
-            <h1>React Components Project</h1>
-            <div className="grid">
-                <div className="card">
-                    <h2>Counter (Prawidłowy)</h2>
-                    <Counter />
-                </div>
-                <div className="card">
-                    <h2>Counter (Nieprawidłowy)</h2>
-                    <CounterIncorrect />
-                </div>
-                <div className="card">
-                    <h2>Handle Click</h2>
-                    <HandleClick />
-                </div>
-                <div className="card">
-                    <h2>Handle Mouse Over</h2>
-                    <HandleMouseOver />
-                </div>
-                <div className="card">
-                    <h2>Show Image</h2>
-                    <ShowImage />
-                </div>
-                <div className="card">
-                    <h2>Load Data from JSON</h2>
-                    <LoadDataFromJson />
-                </div>
-                <div className="card">
-                    <h2>Upload File</h2>
-                    <UploadFile />
-                </div>
-                <div className="card">
-                    <h2>Change Style</h2>
-                    <ChangeStyle />
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <Router>
+      <div>
+        {/* Pasek zakładek dla laboratoriów */}
+        <nav className="main-nav">
+          <ul>
+            <li><Link to="/lab7">Lab 7</Link></li>
+            <li><Link to="/lab8">Lab 8</Link></li>
+            <li><Link to="/lab9">Lab 9</Link></li>
+          </ul>
+        </nav>
+
+        {/* Główne ścieżki */}
+        <Routes>
+          <Route path="/lab7/*" element={<Lab7 />} />
+          <Route path="/lab8/*" element={<Lab8 />} />
+          <Route path="/lab9/*" element={<Lab9 />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
