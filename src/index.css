@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Stylizacja inputów typu text - różowo i radośnie! */
+form input[type="text"], 
+form textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ff69b4;
+    border-radius: 15px;
+    font-size: 1em;
+    background: #fff;
+    box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Fokus na inputach – czary-mary! */
+form input[type="text"]:focus, 
+form textarea:focus {
+    outline: none;
+    border-color: #ff1493;
+    box-shadow: 0px 0px 10px #ff69b4, inset 0px 0px 5px #fff;
+    transform: scale(1.05);
+}
+
+/* Inputy w stylu disabled – też muszą być ładne! */
+form input[type="text"]:disabled {
+    background: #ffe4e1;
+    border-color: #ddd;
+    cursor: not-allowed;
+    color: #aaa;
+}
