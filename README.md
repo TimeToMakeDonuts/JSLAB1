@@ -2,4 +2,4 @@
 LAB 10
 
 Link to see the website: https://timetomakedonuts.github.io/
-Bartłomiej Brzoza 20434
+Bartłomiej Brzoza 20434.
