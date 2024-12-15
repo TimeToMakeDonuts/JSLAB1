@@ -1,18 +1,9 @@
-'use client'
-
-import Header from '@/components/Header';
-import Button from '@/components/Button';
-
-export default function Page() {
-  const handleClick = () => {
-    alert('Dziękuję za kliknięcie!');
-  };
-
+export default function Home() {
   return (
-    <div>
-      <Header title="O mnie" />
-      <p>Hej! Jestem Bartek i tworzę aplikacje Next.js!</p>
-      <Button label="Kliknij mnie!" onClick={handleClick} />
-    </div>
+    <main>
+      <h1 style={{ color: 'white', textAlign: 'center' }}>
+        Laboratorium nr 11 - projekt startowy
+      </h1>
+    </main>
   );
 }
