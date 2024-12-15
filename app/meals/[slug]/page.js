@@ -9,7 +9,7 @@ export async function generateStaticParams() {
         slug: meal
     }));
 
-export default function MealDetailPage() {
+export function MealDetailPage() {
     const { slug } = useParams(); // Pobieramy slug z URL
     const imagePath = `/images/${slug}.jpg`; // Ścieżka obrazka z public/images
 
