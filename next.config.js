@@ -1,10 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    output: 'export', // Włączamy eksport statyczny
-    experimental: {
-        appDir: true, // Włączanie App Directory
-    },
-};
+const nextConfig = {}
 
-
-module.exports = nextConfig;
+module.exports = nextConfig
