@@ -11,7 +11,6 @@ export default async function MealDetailPage({ params }) {
   }
 
   return (
-    <Suspense fallback={<p className={styles.loading}>Fetching meal...</p>}>
       <div className={styles.container}>
         {/* Sekcja nagłówka */}
         <header className={styles.header}>
@@ -33,7 +32,6 @@ export default async function MealDetailPage({ params }) {
           <pre className={styles.instructionsText}>{meal.instructions}</pre>
         </section>
       </div>
-    </Suspense>
   );
 
 }
