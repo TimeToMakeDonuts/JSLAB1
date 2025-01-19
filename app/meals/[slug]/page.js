@@ -7,7 +7,7 @@ export default async function MealDetailPage({ params }) {
   const meal = await getMeal(slug);
 
   if (!meal) {
-    return <div>This meal doesn't exist!</div>;
+    return <div>This meal does not exist!</div>;
   }
 
   return (
