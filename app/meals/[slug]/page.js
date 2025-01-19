@@ -5,7 +5,15 @@ import { getMeal } from '../../../lib/meals';
 
 // Generate static params for pre-rendering
 export function generateStaticParams() {
-  const meals = ['burger', 'curry', 'dumplings', 'macncheese', 'pizza', 'schintzel', 'tomato-salad'];
+    const meals = [
+    'juicy-cheese-burger',
+    'spicy-curry',
+    'homemade-dumplings',
+    'classic-mac-n-cheese',
+    'authentic-pizza',
+    'wiener-schnitzel',
+    'fresh-tomato-salad',
+  ];
   return meals.map((meal) => ({
     slug: meal,
   }));
