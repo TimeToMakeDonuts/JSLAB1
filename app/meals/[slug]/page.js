@@ -1,53 +1,40 @@
-//Github pages musi użyć funckji generateStaticParams, ale powoduje to konflikt z'use client'
-//dlatego daje kod zakomentowany tak jak powinien on wyglądać z użyciem UseParams a strona będzie postawiona za pomocą
-//generateStaticParams
-/*
-'use client';
-
-import { useParams } from 'next/navigation';
-import Image from 'next/image';
-import { generateStaticParams } from './generateStaticParams';
-
-export default function MealDetailPage() {
-    const { slug } = useParams(); // Pobieramy slug z URL
-    const imagePath = `/images/${slug}.jpg`; // Ścieżka obrazka z public/images
-
-    return (
-        <div>
-            <h1>{slug.replace('-', ' ')}</h1>
-            <Image 
-                src={imagePath} 
-                alt={`${slug} Image`} 
-                width={300} 
-                height={300}
-            />
-        </div>
-    );
-*/ 
-
-
-import Image from 'next/image';
-
-export async function generateStaticParams() {
-  const meals = ['burger', 'curry', 'dumplings', 'macncheese', 'pizza', 'schintzel', 'tomato-salad'];
-  return meals.map(meal => ({
-    slug: meal
-  }));
-}
+import { getMeal } from '@/lib/meals';
+import styles from './page.module.css';
+import { Suspense } from 'react';
 
 export default async function MealDetailPage({ params }) {
-    const { slug } = await params;  // Awaiting params
-    const imagePath = `/images/${slug}.jpg`; // Ścieżka obrazka z public/images
+  const { slug } = await params;
+  const meal = await getMeal(slug);
 
-    return (
-        <div>
-            <h1>{slug.replace('-', ' ')}</h1>
-            <Image 
-                src={imagePath} 
-                alt={`${slug} Image`} 
-                width={300} 
-                height={300}
-            />
-        </div>
-    );
+  if (!meal) {
+    return <div>This meal doesn't exist!</div>;
+  }
+
+  return (
+    <Suspense fallback={<p className={styles.loading}>Fetching meal...</p>}>
+      <div className={styles.container}>
+        {/* Sekcja nagłówka */}
+        <header className={styles.header}>
+          <div className={styles.imageWrapper}>
+            <img src={meal.image} alt={meal.title} className={styles.image} />
+          </div>
+          <div className={styles.headerText}>
+            <h1 className={styles.title}>{meal.title}</h1>
+            <p className={styles.summary}>{meal.summary}</p>
+            <p className={styles.creator}>
+              Created by: <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+            </p>
+          </div>
+        </header>
+
+        {/* Sekcja instrukcji */}
+        <section className={styles.instructionsSection}>
+          <h2 className={styles.instructionsTitle}>Instructions</h2>
+          <pre className={styles.instructionsText}>{meal.instructions}</pre>
+        </section>
+      </div>
+    </Suspense>
+  );
+
 }
+
