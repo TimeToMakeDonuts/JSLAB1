@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import classes from './page.module.css';
 import { Suspense } from 'react';
-import { getMeal } from '@/lib/meals';
+import { getMeal } from '../../..//lib/meals';
 
 async function MealDetail({ slug }) {
   const meal = await getMeal(slug);
 
   if (!meal) {
-    return <div className={classes.error}>This meal doesn&apos;t exist! Wonderhoy...☆</div>;
+    return <div className={classes.error}>This meal doesn&apos;t exist!</div>;
   }
 
   return (
