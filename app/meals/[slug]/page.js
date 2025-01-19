@@ -1,7 +1,15 @@
 import Link from 'next/link';
 import classes from './page.module.css';
 import { Suspense } from 'react';
-import { getMeal } from '../../..//lib/meals';
+import { getMeal } from '../../../lib/meals';
+
+// Generate static params for pre-rendering
+export function generateStaticParams() {
+  const meals = ['burger', 'curry', 'dumplings', 'macncheese', 'pizza', 'schintzel', 'tomato-salad'];
+  return meals.map((meal) => ({
+    slug: meal,
+  }));
+}
 
 async function MealDetail({ slug }) {
   const meal = await getMeal(slug);
@@ -34,7 +42,7 @@ async function MealDetail({ slug }) {
 }
 
 export default async function MealDetailPage({ params }) {
-  const { slug } = await params; // Await params to resolve the Promise
+  const { slug } = params;
 
   return (
     <div>
